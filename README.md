@@ -8,7 +8,7 @@ A real-time system monitoring dashboard built for the Raspberry Pi 5, using **Fl
 
 ## 📸 Screenshot
 
-![Image](https://github.com/user-attachments/assets/11c2c10b-e1c5-43e9-90c7-311d2996c8ed)
+![Pi 5 Dashboard](https://raw.githubusercontent.com/g1forfun/Pi-Monitor/main/assets/pi-monitor-dashboard.png)
 
 ---
 
