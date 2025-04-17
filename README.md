@@ -3,6 +3,7 @@
 # 🖥️ Pi 5 Performance Dashboard
 
 A real-time system monitoring dashboard built for the Raspberry Pi 5, using **Flask**, **Socket.IO**, and **Chart.js**. Tracks key performance metrics including CPU usage, memory, temperature, fan speed, network I/O, disk activity, and PMIC power draw — all in a sleek, dark-themed UI.
+All you need for Raspberry Pi 5 monitoring.
 
 ---
 
