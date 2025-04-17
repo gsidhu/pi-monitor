@@ -1,5 +1,7 @@
 ![Python](https://img.shields.io/badge/python-3.9+-blue.svg)
 ![Flask](https://img.shields.io/badge/Flask-app-lightgrey)
+[![GitHub stars](https://img.shields.io/github/stars/g1forfun/Pi-Monitor?style=social)](https://github.com/g1forfun/Pi-Monitor/stargazers)
+
 # 🖥️ Pi 5 Performance Dashboard
 ⭐️ If you like this project, give it a star!
 
