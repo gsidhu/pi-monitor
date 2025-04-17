@@ -1,3 +1,5 @@
+![Python](https://img.shields.io/badge/python-3.9+-blue.svg)
+![Flask](https://img.shields.io/badge/Flask-app-lightgrey)
 # 🖥️ Pi 5 Performance Dashboard
 
 A real-time system monitoring dashboard built for the Raspberry Pi 5, using **Flask**, **Socket.IO**, and **Chart.js**. Tracks key performance metrics including CPU usage, memory, temperature, fan speed, network I/O, disk activity, and PMIC power draw — all in a sleek, dark-themed UI.
@@ -30,9 +32,6 @@ A real-time system monitoring dashboard built for the Raspberry Pi 5, using **Fl
 ---
 
 ## 📦 Requirements
-![Python](https://img.shields.io/badge/python-3.9+-blue.svg)
-![Flask](https://img.shields.io/badge/Flask-app-lightgrey)
-![License](https://img.shields.io/github/license/g1forfun/Pi-Monitor)
 
 - Python 3.7+
 - Raspberry Pi 5
