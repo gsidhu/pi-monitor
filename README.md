@@ -44,6 +44,21 @@ All you need for Raspberry Pi 5 monitoring.
 
 ---
 
+⚙️ Lightweight by Design
+This dashboard is built with efficiency in mind:
+
+RAM Usage: Typically under 100MB total, including the Python runtime, Flask server, and WebSocket background updates.
+
+CPU Impact: Negligible — system stats are fetched periodically with lightweight tools like psutil, avoiding constant polling or heavy shell loops.
+
+Zero bloat: No heavy frameworks or services — just HTML, Bootstrap, Chart.js, and a minimal Flask backend.
+
+Headless-optimized: Ideal for headless Raspberry Pi boards, even those with limited memory.
+
+Self-cleaning: No background daemons, logs, or databases to maintain. All data is stored in memory and automatically resets on reboot.
+
+The goal of this project is to provide a visually modern and extensible dashboard that stays well within the performance envelope of even a 2GB Pi board — while being easy to expand for custom use cases like Pi-hole stats, power monitoring, or even LLM integrations.
+
 ## 🛠️ Installation
 
 ```bash
