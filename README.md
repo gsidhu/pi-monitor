@@ -7,7 +7,11 @@ A real-time system monitoring dashboard built for the Raspberry Pi 5, using **Fa
 ---
 
 ## 📸 Screenshot
-![Image]()
+
+<div style="display: flex; gap: 1rem; width: 100%;">
+  <img src="./dark-mode.png" alt="Dark Mode" width="400">
+  <img src="./light-mode.png" alt="Light Mode" width="400">
+</div>
 
 ---
 
