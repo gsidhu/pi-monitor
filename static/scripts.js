@@ -277,6 +277,38 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  // Theme toggle
+  const themeToggle = document.getElementById("theme-toggle");
+  const body = document.body;
+
+  const applyTheme = (theme) => {
+    if (theme === "dark") {
+      body.classList.add("dark-mode");
+      powerChart.options.scales.y.ticks.color = "#aaa";
+      powerChart.options.scales.y.grid.color = "#333";
+      powerChart.options.scales.x.ticks.color = "#aaa";
+      powerChart.options.plugins.legend.labels.color = "#ccc";
+    } else {
+      body.classList.remove("dark-mode");
+      powerChart.options.scales.y.ticks.color = "#6c757d";
+      powerChart.options.scales.y.grid.color = "#dee2e6";
+      powerChart.options.scales.x.ticks.color = "#6c757d";
+      powerChart.options.plugins.legend.labels.color = "#212529";
+    }
+    powerChart.update();
+  };
+
+  themeToggle.addEventListener("click", (e) => {
+    e.preventDefault();
+    const currentTheme = body.classList.contains("dark-mode") ? "light" : "dark";
+    applyTheme(currentTheme);
+    localStorage.setItem("theme", currentTheme);
+  });
+
+  // Apply saved theme on load
+  const savedTheme = localStorage.getItem("theme") || "light";
+  applyTheme(savedTheme);
+
   // Initial calls and intervals
   setTimeout(() => {
     updateStats();

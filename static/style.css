@@ -1,9 +1,30 @@
+:root {
+  --bg-color-light: #f8f9fa;
+  --text-color-light: #212529;
+  --card-bg-color-light: #fff;
+  --card-shadow-light: 0 0 12px rgba(0, 0, 0, 0.1);
+  --footer-text-color-light: #6c757d;
+
+  --bg-color-dark: #111;
+  --text-color-dark: #eee;
+  --card-bg-color-dark: #222;
+  --card-shadow-dark: 0 0 12px rgba(0, 0, 0, 0.5);
+  --footer-text-color-dark: #ccc;
+}
+
 body {
-  background-color: #111;
-  color: #eee;
+  background-color: var(--bg-color-light);
+  color: var(--text-color-light);
   font-family: 'Segoe UI', sans-serif;
   padding-top: 2rem;
+  transition: background-color 0.3s, color 0.3s;
 }
+
+body.dark-mode {
+  background-color: var(--bg-color-dark);
+  color: var(--text-color-dark);
+}
+
 h1 {
   flex-grow: 1;
   margin: 0;
@@ -18,12 +39,19 @@ h1 {
 }
 
 .chart-card {
-  background-color: #222;
+  background-color: var(--card-bg-color-light);
   border-radius: 12px;
   padding: 1rem;
-  box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+  box-shadow: var(--card-shadow-light);
   margin-bottom: 1.5rem;
+  transition: background-color 0.3s, box-shadow 0.3s;
 }
+
+body.dark-mode .chart-card {
+  background-color: var(--card-bg-color-dark);
+  box-shadow: var(--card-shadow-dark);
+}
+
 .chart-title {
   font-size: 1.2rem;
   margin-bottom: 0.5rem;
@@ -45,11 +73,15 @@ canvas {
 
 .footer {
   text-align: center;
-  color: #ccc;
+  color: var(--footer-text-color-light);
   font-size: 1rem;
   padding: 1rem;
   margin-top: 2rem;
   opacity: 0.85;
+}
+
+body.dark-mode .footer {
+  color: var(--footer-text-color-dark);
 }
 
 .footer i {
@@ -61,13 +93,29 @@ canvas {
   margin: 0 1rem;
 }
 
+.theme-toggle-link {
+  color: #0dcaf0;
+  text-decoration: none;
+  margin-left: 1rem;
+}
+
+.theme-toggle-link:hover {
+  text-decoration: underline;
+}
+
 .skeleton-loader {
   width: 100px;
   height: 20px;
-  background: linear-gradient(90deg, #333, #444, #333);
+  background: linear-gradient(90deg, #f0f0f0, #e0e0e0, #f0f0f0);
   background-size: 200% 100%;
   animation: skeleton-loading 1.5s infinite linear;
   border-radius: 4px;
+}
+
+body.dark-mode .skeleton-loader {
+  background: linear-gradient(90deg, #333, #444, #333);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite linear;
 }
 
 @keyframes skeleton-loading {
