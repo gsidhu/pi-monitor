@@ -2,6 +2,7 @@ import asyncio
 import psutil
 import time
 import os
+import shutil
 import subprocess
 import logging
 from typing import Dict, List, Optional, Tuple
@@ -421,9 +422,14 @@ async def reboot():
 async def speedtest():
     """Run a speedtest and return results."""
     try:
+        speedtest_path = shutil.which("speedtest-cli")
+        if not speedtest_path:
+            logger.error("speedtest-cli not found")
+            raise HTTPException(status_code=500, detail="speedtest-cli not found")
+
         logger.info("Running speedtest...")
         process = await asyncio.create_subprocess_exec(
-            "speedtest-cli", "--simple",
+            speedtest_path, "--simple",
             stdout=asyncio.subprocess.PIPE,
             stderr=asyncio.subprocess.PIPE
         )

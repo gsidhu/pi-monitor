@@ -1,17 +1,13 @@
-![Python](https://img.shields.io/badge/python-3.9+-blue.svg)
-![Flask](https://img.shields.io/badge/Flask-app-lightgrey)
-[![GitHub stars](https://img.shields.io/github/stars/g1forfun/Pi-Monitor?style=social)](https://github.com/g1forfun/Pi-Monitor/stargazers)
+> [!NOTE]
+> Forked from [g1forfun/Pi-Monitor](https://github.com/g1forfun/Pi-Monitor)
 
-# 🖥️ Pi 5 Performance Dashboard
-⭐️ If you like this project, give it a star!
-
-A real-time system monitoring dashboard built for the Raspberry Pi 5, using **Flask**, **Socket.IO**, and **Chart.js**. Tracks key performance metrics including CPU usage, memory, temperature, fan speed, network I/O, disk activity, and PMIC power draw — all in a sleek, dark-themed UI.
-All you need for Raspberry Pi 5 monitoring.
+# 🍓 Pi 5 Stat Monitoring Dashboard
+A real-time system monitoring dashboard built for the Raspberry Pi 5, using **FastAPI** and **Chart.js**. Tracks key performance metrics including CPU usage, memory, temperature, fan speed, network I/O, disk activity, and PMIC power draw.
 
 ---
 
 ## 📸 Screenshot
-![Image](https://github.com/user-attachments/assets/39701724-cd86-4025-8676-d90e1f1b3896)
+![Image]()
 
 ---
 
@@ -28,43 +24,20 @@ All you need for Raspberry Pi 5 monitoring.
   - Network I/O (MB/s)
   - PMIC power draw (W)
 - Auto-min/max tracking for power
-- Socket.IO WebSocket updates
+- WebSocket updates
 - Bootstrap 5 + dark mode styling
 - Optional floating stat indicators
-
----
-
-## 📦 Requirements
-
-- Python 3.7+
-- Raspberry Pi 5
-- Flask
-- `psutil` and related system tools
-- (Optional) `vcgencmd`, `zramctl`, or any sensors you want to add
-
----
-
-⚙️ Lightweight by Design
-This dashboard is built with efficiency in mind:
-
-RAM Usage: Typically under 100MB total, including the Python runtime, Flask server, and WebSocket background updates.
-
-CPU Impact: Negligible — system stats are fetched periodically with lightweight tools like psutil, avoiding constant polling or heavy shell loops.
-
-Zero bloat: No heavy frameworks or services — just HTML, Bootstrap, Chart.js, and a minimal Flask backend.
-
-Headless-optimized: Ideal for headless Raspberry Pi boards, even those with limited memory.
-
-Self-cleaning: No background daemons, logs, or databases to maintain. All data is stored in memory and automatically resets on reboot.
-
-The goal of this project is to provide a visually modern and extensible dashboard that stays well within the performance envelope of even a 2GB Pi board — while being easy to expand for custom use cases like Pi-hole stats, power monitoring, or even LLM integrations.
+- Power options:
+  - Shutdown
+  - Reboot
+- Speedtest integration
 
 ## 🛠️ Installation
 
 ```bash
 # Clone the repo
-git clone https://github.com/g1forfun/Pi-Monitor.git
-cd Pi-Monitor
+git clone https://github.com/gsidhu/pi-monitor.git
+cd pi-monitor
 
 # Create virtual environment
 python3 -m venv venv
@@ -73,5 +46,11 @@ source venv/bin/activate
 # Install dependencies
 pip install -r requirements.txt
 
-# Run it
+# Run it (dev mode) and visit http://<PI_IP_ADDRESS>:5000
 python app.py
+
+# For production, use uvicorn in a system service:
+sudo cp pi-monitor.service /etc/systemd/user/
+systemctl --user enable pi-monitor.service
+systemctl --user start pi-monitor.service
+```

@@ -5,9 +5,18 @@ body {
   padding-top: 2rem;
 }
 h1 {
-  text-align: center;
+  flex-grow: 1;
+  margin: 0;
+  font-size: 1.75rem;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 2rem;
 }
+
 .chart-card {
   background-color: #222;
   border-radius: 12px;
@@ -50,4 +59,22 @@ canvas {
 
 .footer span {
   margin: 0 1rem;
+}
+
+.skeleton-loader {
+  width: 100px;
+  height: 20px;
+  background: linear-gradient(90deg, #333, #444, #333);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite linear;
+  border-radius: 4px;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }

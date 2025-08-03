@@ -284,4 +284,66 @@ window.addEventListener("DOMContentLoaded", () => {
     setInterval(updateStats, 1000);
     setInterval(updatePowerChart, 2000);
   }, 500);
+
+  // Power controls
+  const rebootBtn = document.getElementById("rebootBtn");
+  const shutdownBtn = document.getElementById("shutdownBtn");
+
+  rebootBtn.addEventListener("click", async () => {
+    if (confirm("Are you sure you want to reboot the system?")) {
+      try {
+        await fetch("/reboot", { method: "POST" });
+        alert("Reboot command sent.");
+      } catch (err) {
+        console.error("Reboot request failed:", err);
+        alert("Failed to send reboot command.");
+      }
+    }
+  });
+
+  shutdownBtn.addEventListener("click", async () => {
+    if (confirm("Are you sure you want to shut down the system?")) {
+      try {
+        await fetch("/shutdown", { method: "POST" });
+        alert("Shutdown command sent.");
+      } catch (err) {
+        console.error("Shutdown request failed:", err);
+        alert("Failed to send shutdown command.");
+      }
+    }
+  });
+
+  // Speedtest
+  const speedtestBtn = document.getElementById("speedtestBtn");
+  const speedtestLoader = document.getElementById("speedtestLoader");
+  const pingResult = document.getElementById("pingResult");
+  const downloadResult = document.getElementById("downloadResult");
+  const uploadResult = document.getElementById("uploadResult");
+
+  const runSpeedtest = async () => {
+    speedtestBtn.disabled = true;
+    speedtestLoader.style.display = "block";
+    pingResult.textContent = "--";
+    downloadResult.textContent = "--";
+    uploadResult.textContent = "--";
+
+    try {
+      const res = await fetch("/api/speedtest");
+      if (!res.ok) {
+        throw new Error(`Speedtest failed with status: ${res.status}`);
+      }
+      const results = await res.json();
+      pingResult.textContent = results.ping.toFixed(2);
+      downloadResult.textContent = results.download.toFixed(2);
+      uploadResult.textContent = results.upload.toFixed(2);
+    } catch (err) {
+      console.error("Speedtest failed:", err);
+      alert("Speedtest failed. Check the console for details.");
+    } finally {
+      speedtestBtn.disabled = false;
+      speedtestLoader.style.display = "none";
+    }
+  };
+
+  speedtestBtn.addEventListener("click", runSpeedtest);
 });

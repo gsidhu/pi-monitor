@@ -5,6 +5,7 @@ After=network.target
 [Service]
 Type=simple
 WorkingDirectory=/home/thatgurjot/pi-monitor
+Environment="PATH=/home/thatgurjot/pi-monitor/pi-monitor-venv/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/local/games:/usr/games"
 ExecStart=/home/thatgurjot/pi-monitor/pi-monitor-venv/bin/uvicorn app:app --host 0.0.0.0 --port 5000
 Restart=on-failure
 RestartSec=5
